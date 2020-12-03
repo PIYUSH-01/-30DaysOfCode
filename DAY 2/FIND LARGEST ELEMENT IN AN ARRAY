@@ -1,0 +1,53 @@
+//LARGEST ELEMENT IN AN ARRAY.
+//We've to return the index of the largest element of the array.
+/* 
+	I/P:- arr[] = {10, 5, 20, 8}
+    O/P:- 2
+*/
+
+//BETTER APPROACH than the other one
+/*My initial approach:
+	1. Traverse through the whole array by comparing 2 elements at a time and then storing the index of the larger one in a variable 'max_index' and then keep on doing it till I reach the very end.
+*/    
+
+//MY CODE:
+
+int getLargest(int arr[], int n) {
+	int max_index = 0;
+  	for(int i = 1; i < n-1; i++) {
+      if(arr[i] > arr[max_index])
+        max_index = i; 
+    }
+  	return max_index;
+}  
+
+//TIME COMPLEXITY:- Theta(n) [Because we'll traverse the whole array once no matter where the max_element is in the array]
+
+/*A NAIVE APPROACH:- 
+	1. We can start by taking the first element as the masimum element and then start comparing it with other elements one by one and the momentwe find a greater element we store that element in the max variable and then compare it with all the elements starting from the first and repeat this process till we find the maximum element.
+//TIME COMPLEXITY for this approach will be O(n^2) because every time when we'll find a larger element we'll traverse the whole array again and in the worst case the array will be in increasing ordeer and for every next element we'll be traversing through the whole array n times.
+*/
+
+//Code of Naive approach:
+
+int getLargest(int arr[], int n) {
+	for(int i = 0; i < n; i++){
+      bool flag = true;
+      for(int j = 0; j < n; j++) {
+        if(arr[j] > arr[i]) {
+          flag = false;
+          break;
+        }  
+        if(flag == true)
+          return i; //We've found our largest element on ith index as no element was found to be larger than this when we ran our 2nd loop.
+      }
+      return -1; //This line will enevr be executed because we'll always have a largest element even if we've only one element in our array. This line is just to avoid some warnings.
+}  
+  
+//DRIVER CODE
+  
+int main() {
+	int arr[] = {5, 8, 10, 20};
+    cout<< getLargest(arr, 4);
+	return 0;
+}  
