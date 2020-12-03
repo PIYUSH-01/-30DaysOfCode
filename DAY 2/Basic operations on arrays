@@ -42,3 +42,35 @@ int insertion(int arr[], int size, int capacity, int x, int pos) {
 }
 
 //TIME COMPLEXITY:- O(n)
+
+//Performing deletion operation in arrays in C++
+//Return the size of the new array after insertion.
+/*!In case of deletion thoughthe Time comlexity will be O(n) because even after deletion
+we have to replace the elements on the right of the deletion one place behind to fill up
+the empty space.
+BUT
+In case we have to delete the last element of the array then we can definetly do it in
+O(1) time because the rest of the array will be rearranged by itself.!*/
+
+/*
+	Example:-
+    	I/P:- arr[] = {3, 8, 12, 5, 6}
+        	  x = 12
+        Return the new size now to the main function.
+        then,
+        O/P:- arr[] = {3, 8, 5, 6, _}
+*/
+
+int(int arr[], int n, int x) {
+  int i = 0; // declared outside of for loop to record the position of the element to delete
+  if(arr[n-1] == x) //Special case:- checking if element is present on the last position
+      return n-1;
+  for(i = 0; i < n; i++) //Traversing the whole array to find the element
+    if(arr[i] == x)
+      break;
+  if(i == n)       //This is the case when the element was not found after traversing the whole array.
+    return n;
+  for(int j = i; j < n-1; j++)
+    arr[j] = arr[j+1];
+  return n-1;  
+}
