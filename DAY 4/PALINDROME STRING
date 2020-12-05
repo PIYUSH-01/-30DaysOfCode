@@ -1,0 +1,46 @@
+//PALINDROME STRING - GFG (https://practice.geeksforgeeks.org/problems/palindrome-string0817/1#)
+//You don't need to read input or print anything. Complete the function isPlaindrome() which accepts string S and returns a boolean value.
+
+/*
+	I/P O/P EXAMPLES
+    
+    	1. I/P:- S = "abba"
+           O/P:- 1
+		   Explanation: S is a palindrome	
+        2. I/P:- S = "abc"
+           O/P:- 0
+		   Explanation: S is not a palindrome	
+*/
+
+/*
+	CONSTRAINTS:
+    1. Expected Time Complexity: O(Length of S) 
+    2. Expected Auxiliary Space: O(1) 
+*/
+
+/*
+	APPROACH:
+    1. Take a variable halfSize and compute the size of the given string and then divide it by half.
+    2. Run the for loop 'halfSize' times and each time compare one element from left with one element from right which will depend on the value of 'i'.
+    3. If each of the comparisons results out to be same then after the end of 'for loop' return '1'. otherwise return '0'
+*/
+
+//CODE:
+
+class Solution{
+public:	
+	
+	
+	int isPlaindrome(string S)
+	{
+	    int halfSize = S.size() / 2; //half the size of the string.
+	    for(int i = 0; i < halfSize; i++) {
+	        if(S[i] == S[S.size() - 1 - i])
+	            continue;
+	        else
+	            return 0;
+	    }
+	    return 1; 
+	}
+
+};

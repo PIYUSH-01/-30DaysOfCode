@@ -1,0 +1,47 @@
+//REVERSE STRING - LEETCODE 344. - https://leetcode.com/problems/reverse-string/
+//Write a function that reverses a string. The input string is given as an array of characters char[].
+//You may assume all the characters consist of printable ascii characters.
+
+//!!MAJOR LEARNING!!:- Don't forget to use the '&' operator to create the 'call by reference' type function 'SWAP' to reflect the changes back to 'main'. Otherwise the swapped results won't reflect in 'main'.
+
+/*
+	I/P O/P EXAMPLES
+    
+    	1. I/P:- ["h","e","l","l","o"]
+           O/P:- ["o","l","l","e","h"]
+           
+        2. I/P:- ["H","a","n","n","a","h"]
+           O/P:- ["h","a","n","n","a","H"]
+*/
+
+/*
+	CONSTRAINTS:
+	Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+*/
+
+/*
+	APPROACH:
+    1. Take a variable halfSize and compute the size of the given string and then divide it by half.
+    2. Run the 'for loop' 'halfSize' times and each time SWAP one element from left with one element from right which will depend on the value of 'i'.
+    3. After swapping all the elements from left with right just print out the string using the 'for loop'.
+*/
+
+//CODE:
+
+class Solution {
+public:
+  	//Function to swap the characters of the string.
+    void swap(char &a, char &b) {
+        a = a + b;
+        b = a - b;
+        a = a - b;
+    }
+    void reverseString(vector<char>& s) {
+        int halfSize = 0;
+        halfSize = s.size() / 2;
+        for(int i = 0; i <= halfSize-1; i++) //To reverse the string
+            swap(s[i], s[s.size() - 1 - i]);
+        for(int i = 0; i < s.size(); i++) //To print the reversed string.
+            cout << s[i];
+    }
+};
