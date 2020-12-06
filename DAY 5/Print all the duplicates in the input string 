@@ -1,0 +1,52 @@
+//Print all the duplicates in the input string - GFG(https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/)
+//Write an efficient program to print all the duplicates and their counts in the input string.
+
+/*
+
+	I/P O/P Examples
+    
+    1. I/P:- "geeksforgeeks"
+    2. O/P:- e 4
+	     f 1
+             g 2
+             k 2
+             o 1
+             r 1
+             s 2
+
+*/
+
+/*
+	Approach:- 
+    1. Will sort the String first using the function sort(string.begin(), string.end()).
+    2. After sorting will use some variables to compare every character of the string in a single traversal 2 at a time and simultaneously count and print the occurences of each letter present.
+    3. It'll get more clear after readin the code and the comments given below.
+*/
+
+//CODE:-
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+  int count = 1; //The count is 1 for the inital letter of the array.
+  char temp = '\0'; 
+  string duplicate;
+  duplicate = "geeksforgeeks"; //the input string.
+  int size = duplicate.size(); //Getting the size of the string.
+  sort(duplicate.begin(), duplicate.end()); //Sorting the given string to align all the letters in a particular manner.
+  temp = duplicate[0]; //Storing the first element of the string and taking it's occurence as 1 in the 'count' variable initially.
+  for(int i = 1; i <= duplicte.size(); i++) {
+    if(duplicate[i] == temp)
+      count++; //Will increase the count on finding consecutive occurences of the same letter.
+    else {
+      cout << temp << " " << count; //Showing the letter and the max no. of it;s occurences.
+      count = 1; //Creating the count 1 for the new different letter
+      temp = duplicate[i]; //Storing the new letter in our temp variable.
+    }
+  }
+  return 0;
+}  
+
+//TIME COMPLEXITY:- O(N logN) [The reason being that we've used one for loop and it'll have O(N) time omplexity bt since the inbuilt sort function have time complexity of O(NlogN) that's why we'll consider it because it is worse as compared to O(n) and we consider the worst case time complexity.]

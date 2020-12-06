@@ -1,0 +1,49 @@
+//Move all negative numbers to beginning and positive to end with constant extra space - GFG (https://www.geeksforgeeks.org/move-negative-numbers-beginning-positive-end-constant-extra-space/)
+//Note: Order of elements is not important here.
+
+/*
+
+	I/P O/P Examples
+    
+    1. I/P:- -12, 11, -13, -5, 6, -7, 5, -3, -6
+    2. O/P:- -12 -13 -5 -7 -3 -6 11 6 5
+
+*/
+
+/*
+	Approach 1 [Using Quick Sort's Partitioning technique.]
+	1. Like in Quick Sort we take a random element of the given array as a pivot and then place it on its right location and do the partition on both of its side and then recursively do the partitioning again & again for al; the partitions and the array inally gets sorted [Using Divide and Conquer approach].
+    2. Similarly we use the PARTITIONING technique here in this questions by taking '0' as our Pivot element and then moving all the '-ve numbers' on the left side of the pivot element and then moving all the '+ve numbers' on the right side of the 
+*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+//FUNCTION TO PRINT THE ARRAY.
+void printArr(int arr[], int size) {
+    for(int i = 0; i < size; i++) 
+        cout << arr[i] << " ";
+}
+
+//USING THE PARTITIONING TECHNIQUE
+void partition(int arr[], int size) {
+    int j = 0;
+    for(int i = 0; i < size; i++) {
+        if(arr[i] < 0){
+            if(i != j)
+                swap(arr[i], arr[j]);
+            j++;
+        }
+    }
+}
+
+int main() {
+    int arr[] = {-12, 11, -13, -5, 6, -7, 5, -3, -6};
+    int size = sizeof(arr) / sizeof(int);
+    partition(arr, size);
+    printArr(arr, size);
+	return 0;
+}
+
+//TIME COMPLEXITY:- O(N)

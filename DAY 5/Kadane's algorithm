@@ -1,0 +1,37 @@
+//Kadane's Algorithm - GFG(https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1#)
+//Given an array arr of N integers. Find the contiguous sub-array with maximum sum.
+
+/*
+	I/P O/P Examples
+    
+    1. I/P:- N = 5
+			 arr[] = {1,2,3,-2,5}
+    
+       O/P:- 9
+
+*/
+
+/*
+	Approach:- 
+    1. Basically we've to find the subarray having the maximum sum thus we've to find the sum of those consecutive elements of our array that will lead us to the maximum sum possible.
+    2. We'll try to ignore the impact of those -ve elements that'll make our sum less than 0 by making our contiguousSum '0' whenever our sum becomes less than 0.
+    
+*/
+
+//CODE:-
+
+// Function to find subarray with maximum sum
+// arr: input array
+// n: size of array
+int maxSubarraySum(int arr[], int n) { 
+    int maxSum = INT_MIN; //Variable to have maxSum.
+    int contiguousSum = 0; //Will add each element of array to this for our Kadane's algo.
+    for(int i = 0; i < n; i++) {
+        contiguousSum += arr[i]; //Addng every element to our contiguous Sum starting from the Starting point
+        if(contiguousSum < 0) //If contiguousSum becomes less than 0 we make it zero again. We're doing it to find the longest contiuous sequence of array elements as in Kadane's algoritm to have maximum sum.
+            contiguousSum = 0;
+        maxSum = max(contiguousSum, maxSum); //This finally make us avoid the impact of the negative value which will make our sum -ve
+    }
+    return maxSum;    
+}
+//TIME COMPLEXITY:- O(N)

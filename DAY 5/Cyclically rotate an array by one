@@ -1,0 +1,82 @@
+//Cyclically rotate an array by one - GFG(https://practice.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one/0#)
+//Given an array, cyclically rotate an array by one.
+/*
+Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case contains an integer n denoting the size of the array. Then following line contains 'n' integers forming the array. 
+
+Output:
+Output the cyclically rotated array by one.
+*/
+
+/*
+1<=T<=1000
+1<=N<=1000
+0<=a[i]<=1000
+*/
+
+
+/*
+	I/P O/P Examples
+    
+    1. I/P:- 2
+             5
+             1 2 3 4 5
+             8
+             9 8 7 6 4 2 1 3
+    
+    2. O/P:- 5 1 2 3 4
+			 3 9 8 7 6 4 2 1
+
+*/
+
+/*
+	Approach:- 
+    1. Store the last element of the array in a temporary variable.
+    2. Move every element of the array EXCEPT the last element one place ahead.
+    3. Move the value of temporary variable (Basically last element of the array) at the First place of the array
+    
+*/
+
+//CODE:-
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int testCases; 
+	int arr[1000]; //Taken size as per the above given constraints.
+	int lastElement = 0, size = 0;
+	cin >> testCases; //Number of test cases 
+
+  	   // for loop for the number of test cases.
+	for(int i = 0; i < testCases; i++) {
+	    cin >> size; //size of the array
+      
+	   // for loop for taking the array input.  
+	    for(int j = 0; j < size; j++) {
+	        cin >> arr[j];
+	    }
+	    if(size > 1) {
+    	    lastElement = arr[size - 1]; //variable to store the last element of the array.
+    	    
+           // for loop to shift every element one position ahead EXCEPT THE LAST ELEMENT.
+            for(int i = size-1; i > 0; i--) {
+                arr[i] = arr[i-1];
+            }
+          
+    		arr[0] = lastElement; //Storing the last element in the first position of the array after shifiting rest of the elements one place ahead.
+    
+    	   // for loop to print out the array.
+    	    for(int i = 0; i < size; i++)
+    	        cout<<arr[i]<<" ";
+    	    cout << "\n";
+	    }
+	    
+        else {
+	        cout << arr[0] << "\n";
+	    }
+	}
+	return 0;
+} 
+
+//TIME COMPLEXITY:- O(N^3) [Really bad nut I will improve it and upload the updated on Github.]
