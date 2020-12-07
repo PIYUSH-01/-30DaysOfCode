@@ -1,0 +1,47 @@
+//33. Value equal to index value - GFG (https://practice.geeksforgeeks.org/problems/value-equal-to-index-value1330/1)
+//Given an array Arr of N positive integers. Your task is to find the elements whose value is equal to that of its index value.
+
+//CONSTRAINTS
+/*
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(1)
+1 ≤ N ≤ 105
+1 ≤ Arr[i] ≤ 106
+*/
+
+
+/*
+	I/P O/P Examples
+    
+    1. I/P:- N = 5
+			 Arr[] = {15, 2, 45, 12, 7}
+    
+    2. O/P:- 2
+    
+    Explanation: Only Arr[2] = 2 exists here.
+
+*/
+
+/*
+	Approach:- 
+    1. Create a vector and then traverse the whole vector and while traversing look for the elements that have their values and their position(It's POSITION not INDEX MIND IT) in the vector same.
+    2. Along with looking for that kind of elements keep pushing back the position in the new vector.
+    3. Finally return the Vector.
+    
+*/
+
+//CODE:-
+
+class Solution{
+public:
+
+	vector<int> valueEqualToIndex(int arr[], int n) {
+	    vector<int> returning;
+	    for(int i = 0; i < n; i++) {
+	        if(arr[i] == i+1)
+	            returning.push_back(i+1);
+	    }
+	    return returning;
+	}
+};
+//TIME COMPLEXITY:- O(N) 

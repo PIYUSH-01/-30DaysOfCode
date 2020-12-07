@@ -1,0 +1,48 @@
+//Count Squares - GFG (https://practice.geeksforgeeks.org/problems/count-squares3649/1#)
+//Consider a sample space S consisting of all perfect squares starting from 1, 4, 9 and so on. You are given a number N, you have to output the number of integers less than N in the sample space S.
+
+//CONSTRAINTS
+/*
+Expected Time Complexity: O(sqrt(N))
+Expected Auxiliary Space: O(1)
+1 <= N <= 108
+*/
+
+
+/*
+	I/P O/P Examples
+    
+    1. I/P:- N = 9
+    
+    2. O/P:- 2
+    
+    Explanation:
+	1 and 4 are the only Perfect Squares less than 9. So, the Output is 2.
+
+*/
+
+/*
+	Approach:- 
+    1. We'll start from 1 and will run a for-loop for all the natural numbers and will keep on checking if the square of those numbers is less than the given number 
+    2. We'll keep a count of the numbers that will have their squares less than the value of given number.
+    3. the moment we'll encounter a number whose square will be larger than our number we'll return the count.
+    
+*/
+
+//CODE:-
+
+class Solution {
+  public:
+    int countSquares(int N) {
+        int count = 0;
+        for(int i = 1; i < N; i++) {
+            if(i*i < N)
+                count++;
+            else
+                break;
+        }
+        return count;
+    }
+};
+
+//TIME COMPLEXITY:- O(N) 

@@ -1,0 +1,45 @@
+//33. Search in Rotated Sorted Array - LeetCode (https://leetcode.com/problems/search-in-rotated-sorted-array/)
+//You are given an integer array nums sorted in ascending order, and an integer target.
+
+//Suppose that nums is rotated at some pivot unknown to you beforehand (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+
+//If target is found in the array return its index, otherwise, return -1.
+
+//CONSTRAINTS
+/*
+1 <= nums.length <= 5000
+-10^4 <= nums[i] <= 10^4
+All values of nums are unique.
+nums is guranteed to be rotated at some pivot.
+-10^4 <= target <= 10^4
+*/
+
+
+/*
+	I/P O/P Examples
+    
+    1. I/P:- nums = [4,5,6,7,0,1,2], target = 0
+    
+    2. O/P:- 4
+
+*/
+
+/*
+	Approach:- 
+    1. Just simply traverse the whole array and the moemnt you find the number just return it's index and then if the number is not their return -1.
+    
+*/
+
+//CODE:-
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[i] == target)
+                return i;
+        }
+        return -1;
+    }
+};
+//TIME COMPLEXITY:- O(N) 
