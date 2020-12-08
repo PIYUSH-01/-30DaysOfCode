@@ -1,0 +1,51 @@
+//Searching in an array where adjacent differ by at most k - GFG (https://www.geeksforgeeks.org/searching-array-adjacent-differ-k/)
+
+//A step array is an array of integer where each element has a difference of at most k with its neighbor. Given a key x, we need to find the index value of x if multiple element exist return the first occurrence of the key.
+
+//IP/OP EXAMPLES
+/*
+
+	I/P: arr[] = {4, 5, 6, 7, 6}
+           k = 1
+           x = 6
+     
+    O/P: 2
+
+*/
+
+
+//MY APPROACH:-
+/*
+
+	1. Traverse the whole array once and then keep on comparing each element while traversing and the moment you find the element just return it's index because we just want the index of the first occurence of the element.
+
+*/
+
+//TIME COMPLEXITY FOR THIS APPROACH:- O(N)
+
+
+//MUCH MUCH BETTER APPROACH:
+
+/*
+
+	1. As we know that difference between all the adjacent elements is at max 'k' [key value] it can be added to the element at left or subtracted from it but the difference will remain 'k'.
+    2. Using this concept first of all we've to determine how much is the difference between our current element that we're standing on and the element that we've to reach suppose in our example it'll be 6 - 4 = 2.
+    3. Then we've to determine that how many 'k' jumps it'd require to reach to the element if we're adding the k's at each adjacent element or subtracting 'k' and not mingling both. it can be devised using 'diff/k' and in our case it'll be (4-2)/1 = 2/1 = 2. i.e. 2 jumps minimum are required with key value 1 to reach our target.
+	4. We can repeat this process until we reach our target element by taking the element as initial at which we'll land in the upcoming calculated jumps like we calculated in the steps above.
+
+*/
+
+//CODE:- 
+
+int search(int arr[], int n, int x, int k) 
+{ 
+    int i = 0; 
+    while (i < n) 
+    { 
+        if (arr[i] == x) //if we find the element at our latest jump simply return the index.
+            return i; 
+      
+        i = i + max(1, abs(arr[i]-x)/k); //Other wise re calulate the no. of key diference required for the next jump.
+    } 
+  return -1; // In case the element is not present.
+}
